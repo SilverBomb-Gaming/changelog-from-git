@@ -1,0 +1,86 @@
+[
+  {
+    "full_hash": "1111111111111111111111111111111111111111",
+    "short_hash": "1111111",
+    "date": "2026-02-02",
+    "subject": "feat: add export",
+    "body": ""
+  },
+  {
+    "full_hash": "2222222222222222222222222222222222222222",
+    "short_hash": "2222222",
+    "date": "2026-02-03",
+    "subject": "fix: handle empty input",
+    "body": "Fixes the crash when the file is empty."
+  },
+  {
+    "full_hash": "3333333333333333333333333333333333333333",
+    "short_hash": "3333333",
+    "date": "2026-02-04",
+    "subject": "docs: update readme",
+    "body": ""
+  },
+  {
+    "full_hash": "4444444444444444444444444444444444444444",
+    "short_hash": "4444444",
+    "date": "2026-02-04",
+    "subject": "docs: update contributing",
+    "body": ""
+  },
+  {
+    "full_hash": "5555555555555555555555555555555555555555",
+    "short_hash": "5555555",
+    "date": "2026-02-06",
+    "subject": "chore(deps): bump httpx from 0.27.0 to 0.28.1",
+    "body": ""
+  },
+  {
+    "full_hash": "6666666666666666666666666666666666666666",
+    "short_hash": "6666666",
+    "date": "2026-02-06",
+    "subject": "chore(deps): bump typer from 0.12.0 to 0.15.1",
+    "body": ""
+  },
+  {
+    "full_hash": "7777777777777777777777777777777777777777",
+    "short_hash": "7777777",
+    "date": "2026-02-07",
+    "subject": "Merge branch 'feature/export' into main",
+    "body": ""
+  },
+  {
+    "full_hash": "8888888888888888888888888888888888888888",
+    "short_hash": "8888888",
+    "date": "2026-02-08",
+    "subject": "security: redact tokens before print",
+    "body": ""
+  },
+  {
+    "full_hash": "9999999999999999999999999999999999999999",
+    "short_hash": "9999999",
+    "date": "2026-02-09",
+    "subject": "test: add parser tests",
+    "body": ""
+  },
+  {
+    "full_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "short_hash": "aaaaaaa",
+    "date": "2026-02-10",
+    "subject": "chore: bump package version to 0.3.0",
+    "body": ""
+  },
+  {
+    "full_hash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "short_hash": "bbbbbbb",
+    "date": "2026-02-11",
+    "subject": "refactor: split render from collect",
+    "body": ""
+  },
+  {
+    "full_hash": "cccccccccccccccccccccccccccccccccccccccc",
+    "short_hash": "ccccccc",
+    "date": "2026-02-12",
+    "subject": "",
+    "body": ""
+  }
+]
