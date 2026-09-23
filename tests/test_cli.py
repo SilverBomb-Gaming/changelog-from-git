@@ -64,6 +64,7 @@ def test_dry_run_lists_commits_and_does_not_build_a_client(
     assert "skip\t" in result.stdout
     assert "Update dependencies." in result.stdout
     assert "# Changelog" not in result.stdout
+    assert "Re-run with --dry-run" not in (result.stderr or "")
 
 
 def test_raw_is_an_alias_of_dry_run(demo_repo: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -90,7 +91,7 @@ def test_no_llm_writes_markdown_without_a_client(demo_repo: Path, monkeypatch: p
     assert result.stdout.startswith("# Changelog\n")
     assert "## [0.2.0] - 2026-02-10" in result.stdout
     assert "### Security\n" in result.stdout
-    assert "Skipped " in (result.stderr or "")
+    assert "Skipped 1 commit as noise" in (result.stderr or "")
 
 
 def test_out_replaces_and_append_adds_a_section(demo_repo: Path, tmp_path: Path) -> None:

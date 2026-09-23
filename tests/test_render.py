@@ -93,9 +93,16 @@ def test_listing_marks_keep_group_and_skip() -> None:
     assert "commits: 4" in listing
     assert "notes: 2" in listing
     assert "skipped: 1" in listing
-    assert "keep\tabc1234\t2026-02-10\tAdded\tAdd export." in listing
-    assert "group\taaa1111,bbb2222\t2026-02-10\tChanged\tUpdate dependencies." in listing
-    assert "skip\tccc3333\t2026-02-10\tmerge commit\tMerge branch 'feature/export' into main" in listing
+    assert "keep\tabc1234\t2026-02-10\tAdded\tfeat: add export\tAdd export." in listing
+    assert (
+        "group\taaa1111\t2026-02-10\tChanged\t"
+        "chore(deps): bump httpx from 0.27.0 to 0.28.1\tUpdate dependencies."
+    ) in listing
+    assert (
+        "group\tbbb2222\t2026-02-10\tChanged\t"
+        "chore(deps): bump typer from 0.12.0 to 0.15.1\tUpdate dependencies."
+    ) in listing
+    assert "skip\tccc3333\t2026-02-10\tmerge commit\tMerge branch 'feature/export' into main\t-" in listing
 
 
 def Path_placeholder():

@@ -172,9 +172,10 @@ def _generate(
         if client is not None:
             client.close()
 
-    if result.skipped:
+    if result.skipped and not dry_run:
+        noun = "commit" if result.skipped == 1 else "commits"
         typer.echo(
-            f"Skipped {result.skipped} commits as noise. Re-run with --dry-run to list them.",
+            f"Skipped {result.skipped} {noun} as noise. Re-run with --dry-run to list them.",
             err=True,
         )
     for warning in result.warnings:

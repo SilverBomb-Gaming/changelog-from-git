@@ -33,7 +33,7 @@ def render_markdown(document: ChangelogDocument) -> str:
             cites = ", ".join(f"`{commit.short_hash}`" for commit in bullet.commits)
             lines.append(f"- {bullet.text} ({cites})")
         lines.append("")
-    return "\n".join(lines).rstrip() + "\n"
+    return "\n".join(lines).rstrip("\n") + "\n"
 
 
 def render_listing(
@@ -60,16 +60,18 @@ def render_listing(
     ]
     for draft in drafts:
         disposition = "group" if draft.grouped else "keep"
-        hashes = ",".join(commit.short_hash for commit in draft.commits)
-        when = draft.commits[0].date
-        subject = draft.summary.replace("\t", " ")
-        lines.append(f"{disposition}\t{hashes}\t{when}\t{draft.section.value}\t{subject}")
+        for commit in draft.commits:
+            subject = commit.subject.replace("\t", " ") or "(empty)"
+            note = draft.summary.replace("\t", " ")
+            lines.append(
+                f"{disposition}\t{commit.short_hash}\t{commit.date}\t{draft.section.value}\t{subject}\t{note}"
+            )
     for item in skipped:
         subject = item.commit.subject.replace("\t", " ") or "(empty)"
         lines.append(
-            f"skip\t{item.commit.short_hash}\t{item.commit.date}\t{item.reason}\t{subject}"
+            f"skip\t{item.commit.short_hash}\t{item.commit.date}\t{item.reason}\t{subject}\t-"
         )
-    return "\n".join(lines).rstrip() + "\n"
+    return "\n".join(lines).rstrip("\n") + "\n"
 
 
 def section_body(markdown: str) -> str:

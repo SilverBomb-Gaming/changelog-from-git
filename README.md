@@ -34,7 +34,7 @@ python samples/make_demo_repo.py
 
 That writes `samples/demo-repo`, a tiny fictional project (`fieldnotes`) with tags `v0.1.0` and `v0.2.0`. The directory is gitignored so this repository does not nest another `.git`.
 
-See the commits the tool will use. This does not call a model:
+See the commits the tool will use. This does not call a model. Each line is one collected commit: `keep`, `group`, or `skip`, then the hash, date, section or skip reason, and the original subject:
 
 ```bash
 git-changelog generate --repo samples/demo-repo --since v0.1.0 --until v0.2.0 --dry-run

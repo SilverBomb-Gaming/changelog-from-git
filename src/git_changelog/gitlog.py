@@ -187,13 +187,18 @@ def _rev_parse(git: str, repo: Path, rev: str) -> str:
     )
     if result.returncode != 0:
         message = _clean_git_error(result.stderr, "unknown revision")
-        if rev in {"HEAD", "head"} and "unknown revision" in message:
+        if rev in {"HEAD", "head"} and _repo_has_no_commits(git, repo):
             raise UsageError(f"{repo} has no commits yet.")
         raise GitError(f"Unknown revision {rev!r}. {message}")
     sha = result.stdout.strip()
     if not sha:
         raise GitError(f"Unknown revision {rev!r}.")
     return sha
+
+
+def _repo_has_no_commits(git: str, repo: Path) -> bool:
+    result = _run([git, "-C", str(repo), "rev-list", "-n", "1", "--all"])
+    return result.returncode == 0 and not result.stdout.strip()
 
 
 def _commit_date(git: str, repo: Path, sha: str) -> str:

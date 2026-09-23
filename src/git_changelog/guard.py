@@ -159,9 +159,20 @@ def _clean_text(text: str, commits: list[Commit]) -> str:
     for commit in commits:
         cleaned = re.sub(rf"\b{re.escape(commit.full_hash)}\b", "", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(rf"\b{re.escape(commit.short_hash)}\b", "", cleaned, flags=re.IGNORECASE)
-    cleaned = _EMPTY_PARENS.sub("", cleaned)
+    cleaned = re.sub(r" *\n *", " ", cleaned)
+    cleaned = _tidy_sentence(cleaned)
+    return cleaned
+
+
+def _tidy_sentence(text: str) -> str:
+    """Collapse whitespace left behind when a fabricated issue number is removed."""
+    cleaned = _EMPTY_PARENS.sub("", text)
     cleaned = _SPACE.sub(" ", cleaned)
-    cleaned = re.sub(r" *\n *", " ", cleaned).strip()
+    cleaned = re.sub(r"\s+([.!?])", r"\1", cleaned)
+    cleaned = re.sub(r"\(\s+", "(", cleaned)
+    cleaned = re.sub(r"\s+\)", ")", cleaned)
+    cleaned = _EMPTY_PARENS.sub("", cleaned)
+    cleaned = _SPACE.sub(" ", cleaned).strip()
     cleaned = cleaned.strip(" -;,:")
     cleaned = _SPACE.sub(" ", cleaned).strip()
     if cleaned and cleaned[-1] not in ".!?":
