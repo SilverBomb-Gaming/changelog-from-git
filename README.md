@@ -10,8 +10,6 @@ Built by Alfredo Cardona ([SilverBomb-Gaming](https://github.com/SilverBomb-Gami
 
 ## In the owner's words
 
-<!-- Replace this paragraph after merge. It is the one spot left for a human voice. -->
-
 I wanted release notes I could check against `git log` without sending the repo to a hosted model. `--no-llm` still leans on conventional-commit prefixes, so a repo that never uses them will look flat until the Ollama pass rewrites the sentences. That limitation is the one I would explain first.
 
 ## What it is / isn't
